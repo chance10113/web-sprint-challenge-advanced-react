@@ -27,5 +27,10 @@ test("form shows success message on submit with form details", () => {
   userEvent.type(stateInput, "New Jefferson");
   userEvent.type(zipInput, "36325");
   // Button Stuff
+  // Query
+  const checkoutButton = screen.getByRole("button", { name: /checkout/i });
+  // Click Button
+  userEvent.click(checkoutButton);
   // Assert
+  // Queries for assertion
 });
