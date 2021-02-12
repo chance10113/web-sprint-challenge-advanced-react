@@ -26,6 +26,10 @@ test("form shows success message on submit with form details", () => {
   userEvent.type(cityInput, "Mixieburg");
   userEvent.type(stateInput, "New Jefferson");
   userEvent.type(zipInput, "36325");
+  // Input Expect
+  expect(firstNameInput).toHaveValue("Chaz");
+  //Input Intentional Failure
+  //   expect(firstNameInput).not.toHaveValue("Chaz")
   // Button Stuff
   // Query
   const checkoutButton = screen.getByRole("button", { name: /checkout/i });
@@ -33,4 +37,19 @@ test("form shows success message on submit with form details", () => {
   userEvent.click(checkoutButton);
   // Assert
   // Queries for assertion
+  const firstNameResult = screen.getByText(/first name/i);
+  const lastNameResult = screen.getByText(/last name/i);
+  const addressResult = screen.getByText(/address/i);
+  const cityResult = screen.getByText(/city/i);
+  const stateResult = screen.getByText(/state/i);
+  const zipResult = screen.getByText(/zip/i);
+  // Expect
+  expect(firstNameResult).toBeInTheDocument();
+  expect(lastNameResult).toBeInTheDocument();
+  expect(addressResult).toBeInTheDocument();
+  expect(cityResult).toBeInTheDocument();
+  expect(stateResult).toBeInTheDocument();
+  expect(zipResult).toBeInTheDocument();
+  // Intentional Failure
+  //   expect(zipResult).not.toBeInTheDocument();
 });
